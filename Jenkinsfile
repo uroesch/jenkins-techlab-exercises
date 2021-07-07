@@ -6,10 +6,16 @@ pipeline {
     timestamps()  // Timestamper Plugin
     disableConcurrentBuilds()
   }
+  tools {
+    jdk 'jdk11'
+    maven 'maven36'
+  }
   stages {
     stage('Greeting') {
       steps {
-        echo 'Hello, World!'
+        sh 'java -version'
+        sh 'javac -version'
+        sh 'mvn -version'
       }
     }
   }
