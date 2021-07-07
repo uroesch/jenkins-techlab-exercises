@@ -13,9 +13,9 @@ pipeline {
   stages {
     stage('Greeting') {
       steps {
-        sh 'mvn -B -V -U -e clean verify -Dsurefire.useFile=false -DargLine="-Djdk.net.URLClassPath.disableClassPathURLCheck=true"'
-        archiveArtifacts 'target/*.?ar'
-        junit 'target/**/*.xml'
+        withMaven {
+          sh 'mvn -B -V -U -e clean verify -Dsurefire.useFile=false -DargLine="-Djdk.net.URLClassPath.disableClassPathURLCheck=true"'
+        }
       }
     }
   }
